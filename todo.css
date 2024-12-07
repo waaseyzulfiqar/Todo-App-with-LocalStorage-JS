@@ -1,0 +1,248 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* Navbar General Styling */
+.navbar {
+    background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  color: #222;
+}
+
+/* Navbar Brand Styling */
+.navbar-brand {
+  font-size: 1.5rem; /* Make the brand more prominent */
+  font-weight: 600;
+  transition: color 0.3s ease;
+  color: #302a2a;
+}
+
+#logoutBtn{
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border: none;
+    padding: 5px 20px;
+    border-radius: 5px;
+    color: white;
+}
+
+/* Toggler Button */
+.navbar-toggler {
+  border: none; /* Remove border */
+  background: rgba(255, 255, 255, 0.3); /* Transparent background */
+  padding: 8px 10px;
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Navbar Items */
+.nav-item .btn {
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px; /* Rounded button */
+  transition: all 0.3s ease;
+}
+
+/* Navbar Collapse Links (optional) */
+.navbar-nav .nav-link {
+  font-size: 1rem;
+  color: #ffffff;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffc371; /* Highlight on hover */
+  text-decoration: none;
+}
+
+.ri-menu-3-line{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),url('https://images.pexels.com/photos/4238511/pexels-photo-4238511.jpeg?auto=compress&cs=tinysrgb&w=600');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* opacity: .5; */
+  background-blend-mode: multiply;
+}
+
+#todo-content {
+  background-color: #ffffff;
+  width: 80%;
+  max-width: 620px;
+  height: 80vh;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  overflow-y: auto;
+  box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.ri-todo-line{
+    color: #FF5845;
+}
+
+#todo-content h1 {
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+#input {
+  width: 85%;
+  height: 45px;
+  background: #f1f5f9;
+  padding: 10px;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid #d1d5db;
+  color: #1f2937;
+  font-size: 17px;
+}
+
+#input:placeholder-shown {
+  font-size: 16px;
+}
+
+#input:focus {
+  outline: none;
+  border: 1px solid #FF5845;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+#input-btn {
+  height: 45px;
+  padding: 5px;
+  border: none;
+  background: #FF5845;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+#todo-list {
+  margin-top: 32px;
+}
+
+#todo-list ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+#todoJs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #fff;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.flex {
+  display: flex;
+  gap: 15px;
+}
+
+.del-btn {
+  border: none;
+  background: transparent;
+  color: red;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0 5px;
+  transition: color .4s;
+
+}
+
+.del-btn:hover{
+    background-color: red;
+    border-radius: 60%;
+    color: white;
+
+}
+
+.edit-btn {
+  border: none;
+  background: transparent;
+  color: #ffad06;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0 5px;
+  transition: color .4s;
+}
+
+.edit-btn:hover{
+    background-color: #ffad06;
+    color: rgb(23, 22, 22);
+    border-radius: 50%;
+}
+
+
+#input-btn:hover {
+  background: #fc402b;
+}
+
+@media (min-width: 770px) {
+  #todo-content {
+    height: 52vh;
+  }
+}
+
+@media (max-width: 650px) {
+  #input {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #todo-content {
+    width: 90%;
+    height: 70vh;
+  }
+
+  .btn-danger {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #todo-content {
+    width: 95%;
+    height: 70vh;
+  }
+  #input-content {
+    flex-direction: column;
+  }
+  #input {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  #input-btn {
+    width: 100%;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  #todo-content {
+    height: 50vh;
+  }
+}

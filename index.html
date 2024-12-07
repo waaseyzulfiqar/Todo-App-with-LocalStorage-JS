@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login, Registration with LocalStorage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main>
+        <div>
+            <div class="form-box">
+                <div id="alert"></div>
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toggle-btn" onclick="login()">Login</button>
+                    <button type="button" class="toggle-btn" onclick="register()">Register</button>
+                </div>
+                <div class="social-icons">
+                    <img src="https://i.postimg.cc/kGrgFySk/fb.png" alt="logo">
+                    <img src="https://i.postimg.cc/PfZxfBsh/tw.png" alt="logo">
+                    <img src="https://i.postimg.cc/4yzN8hbn/gp.png" alt="logo">
+                </div>
+                <form class="input-group" id="login">
+                    <input type="text" id="loginEmail" class="input-field" placeholder="Email ID" required>
+                    <input type="password" id="loginPass" class="input-field" placeholder="Enter Password" required>
+                    <input type="checkbox" class="check-box"><span>Remember Password</span>
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+                <form class="input-group" id="register">
+                    <input type="text" id="username" class="input-field" placeholder="User Name" required>
+                    <input type="email" id="email" class="input-field" placeholder="Email ID" required>
+                    <input type="password" id="password" class="input-field" placeholder="Enter Password" required>
+                    <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
+                    <button type="submit" class="submit-btn">Register</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+
+    <script src="./app.js"></script>
+
+</body>
+
+</html>
