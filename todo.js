@@ -2,53 +2,20 @@ const input = document.querySelector("#input");
 
 const ol = document.querySelector("ol");
 
-var todo = [];
+let todo = [];
 
-var todoArray = []; // to save todo data to localstorage
+let todoArray = []; // to save todo data to localstorage
 
-var getUserTodo = []; // to get the loggedIn user Todo
+let getUserTodo = []; // to get the loggedIn user Todo
 
-var username = document.querySelector("#username");
+const username = document.querySelector("#username");
 
-var currentUser = JSON.parse(localStorage.getItem("Current_User"));
+let currentUser = JSON.parse(localStorage.getItem("Current_User"));
 
-var form = document.querySelector("#form");
+const form = document.querySelector("#form");
 
-if (currentUser) {
-  username.innerHTML = currentUser.username;
 
-  // Retrieve todo data from localStorage
-  var storedTodo = localStorage.getItem(`loggedInUserTodo`);
-
-  if (storedTodo) {
-    todoArray = JSON.parse(storedTodo);
-    console.log("todoArray ===> ", todoArray);
-
-    // Filter todo data for the current user
-    var userTodo = todoArray.filter((todo) => {
-      return todo.userId === currentUser._id;
-    });
-    console.log("userTodo ===>", userTodo);
-
-    var todoTasks = userTodo.map((todo) => todo.task);
-
-    // Update the todo array
-    todo = todoTasks;
-    console.log("todo ===> ", todo);
-
-    renderTodo();
-  }
-
-} else {
-  window.location = "index.html";
-}
-
-function removeUser() {
-  localStorage.removeItem("Current_User");
-  window.location = "index.html";
-}
-
-function renderTodo() {
+const renderTodo = () => {
   if (todo.length === 0) {
     ol.innerHTML = `
       <h4 class="no-todos">Nothing to do? Add a new todo to stay productive!</h4>
@@ -70,13 +37,50 @@ function renderTodo() {
   }
 }
 
-var date = new Date();
+
+if (currentUser) {
+  username.innerHTML = currentUser.username;
+
+  // Retrieve todo data from localStorage
+  let storedTodo = localStorage.getItem(`loggedInUserTodo`);
+
+  if (storedTodo) {
+    todoArray = JSON.parse(storedTodo);
+    console.log("todoArray ===> ", todoArray);
+
+    // Filter todo data for the current user
+    let userTodo = todoArray.filter((todo) => {
+      return todo.userId === currentUser._id;
+    });
+    // console.log("userTodo ===>", userTodo);
+
+    let todoTasks = userTodo.map((todo) => todo.task);
+
+    // Update the todo array
+    todo = todoTasks;
+    console.log("todo ===> ", todo);
+
+    renderTodo();
+  }
+
+} else {
+  window.location = "index.html";
+}
+
+const removeUser = () => {
+  localStorage.removeItem("Current_User");
+  window.location = "index.html";
+}
+
+
+
+let date = new Date();
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
   if (input.value) {
-    var userTodoObj = {
+    let userTodoObj = {
       userId: currentUser._id,
       id: todo.length + 1,
       task: input.value,
@@ -95,7 +99,7 @@ form.addEventListener("submit", function (e) {
   }
 });
 
-function liDelBtn(index) {
+const liDelBtn = (index) => {
   Swal.fire({
     title: "Are you sure ?",
     showDenyButton: true,
@@ -116,7 +120,7 @@ function liDelBtn(index) {
   });
 }
 
-async function liEditBtn(index) {
+const liEditBtn = async (index) => {
   
   const { value: editedTodo } = await Swal.fire({
     title: "Edit your Todo",
@@ -131,6 +135,8 @@ async function liEditBtn(index) {
       }
     },
   });
+
+
   if (editedTodo) {
     
     todo.splice(index, 1, editedTodo); // Use the editedTodo value to update the todo item

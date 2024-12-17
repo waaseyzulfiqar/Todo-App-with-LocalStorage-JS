@@ -1,9 +1,9 @@
-function isLoggedIn() {
+const isLoggedIn = () => {
   var token = localStorage.getItem('Current_User');
   return token !== null;
 }
 
-function redirectToAppPage() {
+const redirectToAppPage = () => {
   if (isLoggedIn()) {
     window.location = 'todo.html';
   }
@@ -14,17 +14,17 @@ redirectToAppPage();
 
 // code starts here
 
-var x = document.getElementById("login");
-var y = document.getElementById("register");
-var z = document.getElementById("btn");
+const x = document.getElementById("login");
+const y = document.getElementById("register");
+const z = document.getElementById("btn");
 
-function register() {
+const register = () => {
   x.style.left = "-400px";
   y.style.left = "50px";
   z.style.left = "110px";
 }
 
-function login() {
+const login = () => {
   x.style.left = "50px";
   y.style.left = "450px";
   z.style.left = "0";
@@ -32,15 +32,16 @@ function login() {
 
 // Signup form functionality //
 
-var registerForm = document.getElementById("register");
-var userData = [];
+const registerForm = document.getElementById("register");
+const userData = [];
+let userObj;
 
 registerForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  var username = document.getElementById("username").value.trim();
-  var email = document.getElementById("email").value.trim();
-  var password = document.getElementById("password").value.trim();
+  const username = document.getElementById("username").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
 
   if (!username || !email || !password) {
     Swal.fire({
@@ -49,7 +50,7 @@ registerForm.addEventListener("submit", function (e) {
       text: "Please fill out all fields!",
     });
   } else {
-    var userObj = {
+    userObj = {
       username: username,
       email: email,
       password: password,
@@ -72,15 +73,15 @@ registerForm.addEventListener("submit", function (e) {
 
 // Login form functionality //
 
-var loginForm = document.getElementById("login");
-var verifiedUser = [];
+const loginForm = document.getElementById("login");
+const verifiedUser = [];
 
 loginForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  var currentUser = null;
+  let currentUser = null;
 
-  var loginEmail = document.getElementById("loginEmail").value.trim();
-  var loginPass = document.getElementById("loginPass").value.trim();
+  const loginEmail = document.getElementById("loginEmail").value.trim();
+  const loginPass = document.getElementById("loginPass").value.trim();
 
   if (!loginEmail || !loginPass) {
     Swal.fire({
@@ -89,7 +90,7 @@ loginForm.addEventListener("submit", function (e) {
       text: "Please fill out all fields!",
     });
   } else {
-    var user_data = JSON.parse(localStorage.getItem("User_Data"));
+    let user_data = JSON.parse(localStorage.getItem("User_Data"));
 
     if (user_data == null) {
       Swal.fire({
@@ -98,7 +99,7 @@ loginForm.addEventListener("submit", function (e) {
         text: "User Not Found!",
       });
     } else {
-      var data = user_data.find(function (user) {
+      let data = user_data.find(function (user) {
         return user.email === loginEmail && user.password === loginPass;
       });
 
