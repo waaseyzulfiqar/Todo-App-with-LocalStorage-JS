@@ -1,16 +1,15 @@
 const isLoggedIn = () => {
-  var token = localStorage.getItem('Current_User');
+  var token = localStorage.getItem("Current_User");
   return token !== null;
-}
+};
 
 const redirectToAppPage = () => {
   if (isLoggedIn()) {
-    window.location = 'todo.html';
+    window.location = "todo.html";
   }
-}
+};
 
 redirectToAppPage();
-
 
 // code starts here
 
@@ -22,13 +21,13 @@ const register = () => {
   x.style.left = "-400px";
   y.style.left = "50px";
   z.style.left = "110px";
-}
+};
 
 const login = () => {
   x.style.left = "50px";
   y.style.left = "450px";
   z.style.left = "0";
-}
+};
 
 // Signup form functionality //
 
@@ -43,6 +42,7 @@ registerForm.addEventListener("submit", function (e) {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
 
+  
   if (!username || !email || !password) {
     Swal.fire({
       icon: "error",
@@ -50,20 +50,20 @@ registerForm.addEventListener("submit", function (e) {
       text: "Please fill out all fields!",
     });
   } else {
+
     userObj = {
       username: username,
       email: email,
       password: password,
-      _id: Date.now()
+      _id: Date.now(),
     };
 
-    
     Swal.fire({
       icon: "success",
       title: "Success",
       text: "Account created successfully!",
     });
-    
+
     registerForm.reset();
   }
   userData.push(userObj);
@@ -110,20 +110,17 @@ loginForm.addEventListener("submit", function (e) {
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-
             verifiedUser.push(data);
-    
+
             localStorage.setItem("Verified_User", JSON.stringify(verifiedUser));
-    
+
             currentUser = data;
-    
+
             localStorage.setItem("Current_User", JSON.stringify(currentUser));
-    
+
             window.location = "todo.html";
           }
         });
-
-
       } else {
         Swal.fire({
           icon: "error",
@@ -132,7 +129,6 @@ loginForm.addEventListener("submit", function (e) {
         });
       }
       loginForm.reset();
-
     }
   }
 });
